@@ -1,5 +1,6 @@
 
 import cv2
+import os
  
 #调用笔记本内置摄像头，参数为0，如果有其他的摄像头可以调整参数为1,2
 cap = cv2.VideoCapture(0)
@@ -9,11 +10,15 @@ if not cap.isOpened():
 #调用人脸分类器，要根据实际路径调整
 cascade_path = "./haarcascade_frontalface_default.xml"
 face_detector = cv2.CascadeClassifier(cascade_path)
-# face_detector = cv2.CascadeClassifier(r'D:/Edu/haarcascade_frontalface_default.xml')  #待更改
-#为即将录入的脸标记一个id
+if not os.path.exists('./data'):
+    print("DATA NOT EXIST")
+    os.makedirs('./data')
+
+# 为即将录入的脸标记一个id
 face_id = input('\n User data input,Look at the camera and wait ...')
 #sampleNum用来计数样本数目
 count = 0
+
 
 while True:    
     print("YEAH")

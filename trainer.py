@@ -49,5 +49,8 @@ faces,ids = get_images_and_labels(path)
 #训练模型
 recog.train(faces,np.array(ids))
 #保存模型
+if not os.path.exists('./trainer'):
+    print("TRAINER NOT EXIST")
+    os.makedirs('./trainer')
 recog.save('./trainer/trainer.yml')
 print('Finished.')
